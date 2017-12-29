@@ -1,0 +1,48 @@
+
+body {
+ background-color: #000;
+ background-image: url('32.jpeg');
+ /* background-size: 100% 100%; */
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: top;
+}
+.border {
+	border:2px solid #ccc;
+	background-color: #777;
+	padding-top: 20px;
+}
+.header {
+	height: 400px;
+	background-image: url('32.jpeg');
+	 background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: top;
+  text-align: center;
+  padding-top: 90px;
+
+}
+
+#maximg {
+position:absolute;
+display:none;
+cursor: pointer;
+}
+#maximgX{
+	position:absolute;
+    right:0;
+    top:10px;
+	font-size: 35px;
+	}
+#panelupr{
+position:fixed;
+display:none;
+background-color:rgba(217, 158, 22, 0.9);
+padding:10px;
+font-weight:bold;
+}
+.strelki{
+font-size:100px !important;
+padding-left: 5px;
+}
+
