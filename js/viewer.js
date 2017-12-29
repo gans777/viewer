@@ -101,32 +101,55 @@ $(document).ready(function($){
 		 $("#maximg>img:last-child").animate({
                               width: '+=140px'
                                                         }); 
-                           /*
-						   $("#maximgX").animate({
-                            left: '+=140px'
-                           });
-                           */                           
-                              width_tec=width_tec+140;    
+                                                   
+            width_tec=width_tec+140;    
+
                                $("#maximg").animate({
                                     left: '-=70'
                                   });
+
+                               $("#maximgX").animate({
+                                    left: '+=140'
+                                  });
 		});//end клик по увеличить
+
         //клик по уменьшить		
         $("#umen").click(function(){
+
+        	if (width_tec<200) return;
+
 		 $("#maximg>img:last-child").animate({
                               width: '-=140px'
                                                         }); 
-                           /*
+                           
 						   $("#maximgX").animate({
-                            left: '+=140px'
+                            left: '-=140px'
                            });
-                           */                           
-                              width_tec=width_tec-140;    
+                                                      
+               width_tec=width_tec-140;    
                                $("#maximg").animate({
                                     left: '+=70'
                                   });
 		});//end клик по уменьшить
 
+		///закрытие по клику на X
+           $("#maximgX").click(function(event){
+        $(".all_img").css({"opacity":"1"});
+        $('#maximg').fadeOut(800,function(){
+          
+          
+            img_Big_now=0;
+        $("#maximg>img").remove();
+        });
+        
+       //$("#maximgX").css({"display":"none"});
+       
+       $("#panelupr").fadeOut(800);
+       });
+       //конец закрытие по клику на X
+
+		//закрытие по клику по любому месту кроме пространства страницы
+	
 		  $(document).mouseup(function (e){ // событие клика по веб-документу
     var div = $("#maximg"); // тут указываем ID элемента
     var panelupravl=$("#panelupr");
@@ -141,14 +164,12 @@ $(document).ready(function($){
       panelupravl.fadeOut(1000);
      // $("#maximg>img").remove();
       $(".all_img").css({"opacity":"1"}); 
-	  /*
-	  $(".paylink_wrap").css({"position":"relative"});
-	  $(".paylink").css({"position":"relative",
-	                  "top":"0px"});
-	  */
+	  
     }
 	
   });
+      
+		  ////конец закрытие по клику по любому месту кроме пространства страницы
 });//последняя скобка $(document).ready(function($){
 
 function next_img(count_img,attrSrc,border_left,width_tec) { //правильнее было назвать this_img или vivod_img
@@ -172,8 +193,14 @@ function next_img(count_img,attrSrc,border_left,width_tec) { //правильн�
 							});
              							
 		 $("#this_nomer").text("страница №"+(count_img+1));
+
+		  $("#maximgX").css({
+                                "position":"relative",
+                                 "left":width_tec+120,
+                                 "top":"0"
+          });
 		 
-		 
+		$(".all_img").css({"opacity":"0.5"}); 
 }
 
 

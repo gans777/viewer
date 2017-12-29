@@ -22,6 +22,7 @@
     <![endif]-->
   </head>
   <body>
+    <div class="all_img"><!--div для всего контента кроме div-ов для просмотрщика-->
     <div class="header">
     <h1>Галлерея коллажей 1</h1>
     </div>
@@ -45,6 +46,9 @@
 </div>
 
 <div class='page_footconst'></div>
+
+</div><!-- конец div для всего контента кроме div-ов для просмотрщика-->
+
  <div id='maximg'><div id="maximgX"><i class='fa fa-times-circle' aria-hidden='true'></i></div></div>
  <div id='panelupr'><div id='this_nomer'></div><div id='nazad'><i class='strelki fa fa-chevron-circle-up' aria-hidden='true'></i>
 </div><div id='vpered'><i class='strelki fa fa-chevron-circle-down' aria-hidden='true'></i>
