@@ -60,7 +60,7 @@ $(document).ready(function($){
 			count_img++;
           var attrSrc=vseImg.get(count_img);
 		 
-           next_img(count_img,attrSrc,border_left,width_tec);          		   
+          next_img(count_img,attrSrc,border_left,width_tec);          		   
 	   });// конец  переход вперед внутри #maximg через клик по картинке
 
 
@@ -73,7 +73,7 @@ $(document).ready(function($){
 		    $(gh).css({"opacity":"0.8"});
 	   count_img--;
 	   var attrSrc=vseImg.get(count_img);
-	    next_img(count_img,attrSrc,border_left,width_tec);
+	   next_img(count_img,attrSrc,border_left,width_tec);
 	   });	//end клик по назад
 
        //клик по вперёд
@@ -134,7 +134,7 @@ $(document).ready(function($){
 
 		///закрытие по клику на X
            $("#maximgX").click(function(event){
-        $(".all_img").css({"opacity":"1"});
+        $("#fon_maximg").fadeOut(800);
         $('#maximg').fadeOut(800,function(){
           
           
@@ -149,27 +149,29 @@ $(document).ready(function($){
        //конец закрытие по клику на X
 
 		//закрытие по клику по любому месту кроме пространства страницы
-	
+	   /*
 		  $(document).mouseup(function (e){ // событие клика по веб-документу
     var div = $("#maximg"); // тут указываем ID элемента
     var panelupravl=$("#panelupr");
     if ((!div.is(e.target) // если клик был не по нашему блоку
         && div.has(e.target).length == 0)&&(!panelupravl.is(e.target) && panelupravl.has(e.target).length ==0)) { // и не по его дочерним элементам
      // $(".page").css({"opacity":1});
+      
       div.fadeOut(1000,function(){
         
-        img_Big_now=0;
-        $("#maximg>img").remove();
+       // img_Big_now=0;
+       // $("#maximg>img").remove();
       }); // скрываем его
-      panelupravl.fadeOut(1000);
-     // $("#maximg>img").remove();
-      $(".all_img").css({"opacity":"1"}); 
+      
+     // panelupravl.fadeOut(1000);
+     
+     
 	  
     }
 	
   });
-      
-		  ////конец закрытие по клику по любому месту кроме пространства страницы
+    */
+        ////конец закрытие по клику по любому месту кроме пространства страницы
 });//последняя скобка $(document).ready(function($){
 
 function next_img(count_img,attrSrc,border_left,width_tec) { //правильнее было назвать this_img или vivod_img
@@ -200,7 +202,9 @@ function next_img(count_img,attrSrc,border_left,width_tec) { //правильн�
                                  "top":"0"
           });
 		 
-		$(".all_img").css({"opacity":"0.5"}); 
+		//$(".all_img").css({"opacity":"0.5"}); 
+		$("#fon_maximg").css({"display":"block"});
+		
 }
 
 

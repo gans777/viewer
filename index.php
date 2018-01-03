@@ -10,9 +10,9 @@
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/f_awesome/css/font-awesome.min.css">
-    <link href="css/style.css" rel="stylesheet">
+    <link href="css/style.css?rnd=123" rel="stylesheet">
       <script src="js/jquery-1.11.0.min.js"></script>
-    <script src="js/viewer.js"></script>
+    <script src="js/viewer.js?rnd=123"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -22,7 +22,7 @@
     <![endif]-->
   </head>
   <body>
-    <div class="all_img"><!--div для всего контента кроме div-ов для просмотрщика-->
+    
     <div class="header">
     <h1>Галлерея коллажей 1</h1>
     </div>
@@ -47,7 +47,7 @@
 
 <div class='page_footconst'></div>
 
-</div><!-- конец div для всего контента кроме div-ов для просмотрщика-->
+
 
  <div id='maximg'><div id="maximgX"><i class='fa fa-times-circle' aria-hidden='true'></i></div></div>
  <div id='panelupr'><div id='this_nomer'></div><div id='nazad'><i class='strelki fa fa-chevron-circle-up' aria-hidden='true'></i>
@@ -57,7 +57,7 @@
 </div>
  <div id='vveditenomer'>все страницы>><div id='kolvostranitc_map'></div></div>
 </div>
-
+<div id='fon_maximg'></div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
   
     <!-- Include all compiled plugins (below), or include individual files as needed -->
