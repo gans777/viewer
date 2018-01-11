@@ -22,7 +22,9 @@ body {
   padding-top: 90px;
 
 }
-
+.img_this {
+	cursor: pointer;
+}
 #maximg {
 position:absolute;
 display:none;
@@ -48,7 +50,12 @@ font-size:100px !important;
 padding-left: 5px;
 cursor: pointer;
 }
-
+#close_all_panel {
+	position: absolute;
+	top:-5px;
+	right: 0;
+	cursor: pointer;
+}
 #fon_maximg{
 	display: none;
 	position: fixed;

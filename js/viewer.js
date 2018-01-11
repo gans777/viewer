@@ -1,15 +1,29 @@
 $(document).ready(function($){
 
     var win_w=$(window).width();//текущая ширина экрана
-  var vseImg=$("img.img_this").map(function(v_index,elem){
-					  return $(elem).attr("src");
+  var vseImg=$("img.img_this").map(function(v_index,elem){  //собираются все ссылки на изображения и за одно подготовка к lazyload
+  	                if (v_index<4){ return $(elem).attr("src");}// это пропускаются первые изображения от назойливого внимания lazyload
+  	                  	else {
+  	                  	var zx=$(elem).attr("src");
+  	                  	 $(elem).addClass("lazy");
+                     var dataoriginal=$(elem).attr("src");
+					  $(elem).attr("data-original", dataoriginal);
+					  $(elem).attr("src", "js/free-preloaders3c.gif");
+					  return zx;
+					        }
 					 });
+
+          $("img.lazy").show().lazyload({  // эффект lazyload к viewer отношения не имеет, но без него долго грузится
+        threshold : 1200,
+        effect : 'fadeIn'
+      }); 
 
 	 var count_img=0;
 	  var img_Big_now=0;
 	  var width_tec=win_w-160;
 	  var border_left=148;
-	  //build_table(str_chislo_vsego,vseImg.length); //построение таблицы в меню всплывающем с ссылками на страницы
+	     var str_chislo_vsego=vseImg.length;// этот параметр нужен если просмотр части галлереи закрыт для бесплатного просмотра
+	  build_table(str_chislo_vsego,vseImg.length); //построение таблицы в меню всплывающем с ссылками на страницы
  ////////первый клик по img галереи
         $("img.img_this").click(function(event){
 
@@ -41,7 +55,7 @@ $(document).ready(function($){
 		 next_img(count_img,attrSrc,border_left,width_tec); 
 		});  ///конец первый клик по img галереи
 
-		 //переход вперед внутри #maximg через клик по картинке
+		 //переход вперед внутри #maximg через клик по картинке (или второй клик по уже открытой картинке с целью перейти на следующую)
        $("#maximg").delegate("img","click",function(event){
 	     
 
@@ -132,21 +146,49 @@ $(document).ready(function($){
                                   });
 		});//end клик по уменьшить
 
-		///закрытие по клику на X
-           $("#maximgX").click(function(event){
-        $("#fon_maximg").fadeOut(800);
-        $('#maximg').fadeOut(800,function(){
-          
-          
-            img_Big_now=0;
-        $("#maximg>img").remove();
-        });
+////НАВЕДЕНИЕ на часть меню ВСЕ СТРАНИЦЫ
+             $("#vveditenomer").hover(
+                   function(){
+                 $("#kolvostranitc_map").css({"visibility":"visible"});
+                              },
+                 function(){
+                       $("#kolvostranitc_map").hover(
+                              function(){},
+                              function(){$("#kolvostranitc_map").css({"visibility":"hidden"});
+                                          });
+                 
+                  
+                              } );
+              $(".nomerimg").delegate("a","click",function(event){ //клик по выбранному в выпавшей таблице номеру картики
+        // PredvDogruz();
+        var z=Number($(event.delegateTarget).text());
         
-       //$("#maximgX").css({"display":"none"});
-       
-       $("#panelupr").fadeOut(800);
+         var gh="#maximg>img:eq("+count_img +")";
+        $(gh).css({"opacity":"0.8"});
+                                                                
+         
+        
+          count_img=z-1;
+          var attrSrc=vseImg.get(count_img);
+            
+               	
+        	next_img(count_img,attrSrc,border_left,width_tec);		   
+											                       });
+												//// конец меню при наведении на "все страницы"	
+
+		///закрытие по клику на X
+           $("#maximgX").click(function(event){ // крестик над картинкой
+      
+              img_Big_now=close_all();
        });
-       //конец закрытие по клику на X
+
+
+             $("#close_all_panel").click(function(event){ // и закрытие по крестику на панели управления
+        
+                img_Big_now=close_all();
+                                                        });
+         
+       //конец закрытия по клику на X
 
 		//закрытие по клику по любому месту кроме пространства страницы
 	   /*
@@ -212,7 +254,24 @@ function clear_not_last(){
 	if ($("#maximg>img").length==1) return;
     $("#maximg>img").prev("img").remove();
 } 
-function build_table(str_chislo_vsego,vseImg_length) {  ////функция построения таблицы в всплывающем меню
+
+function close_all(){
+	 $("#fon_maximg").fadeOut(800);
+        $('#maximg').fadeOut(800,function(){
+          
+          
+            
+        $("#maximg>img").remove();
+        
+        });
+        
+       //$("#maximgX").css({"display":"none"});
+       
+       $("#panelupr").fadeOut(800);
+       return 0;
+}
+function build_table(str_chislo_vsego=vseImg_length,vseImg_length) {  ////функция построения таблицы, что принаведении курсора в  меню ВСЕ СТРАНИЦЫ
+	
 	      var td=20;//число столбцов
        var tr=Math.ceil(str_chislo_vsego/td);//число строк
        var table="<table class='kolvostranitc_map'>";//определяем переменную,где будет таблица

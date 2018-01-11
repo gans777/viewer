@@ -13,6 +13,7 @@
     <link href="css/style.css?rnd=123" rel="stylesheet">
       <script src="js/jquery-1.11.0.min.js"></script>
     <script src="js/viewer.js?rnd=123"></script>
+      <script src="js/jquery.lazyload.js"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -50,7 +51,7 @@
 
 
  <div id='maximg'><div id="maximgX"><i class='fa fa-times-circle' aria-hidden='true'></i></div></div>
- <div id='panelupr'><div id='this_nomer'></div><div id='nazad'><i class='strelki fa fa-chevron-circle-up' aria-hidden='true'></i>
+ <div id='panelupr'><div id="close_all_panel"><i class="fa fa-times-circle" aria-hidden="true"></i></div><div id='this_nomer'></div><div id='nazad'><i class='strelki fa fa-chevron-circle-up' aria-hidden='true'></i>
 </div><div id='vpered'><i class='strelki fa fa-chevron-circle-down' aria-hidden='true'></i>
 </div><div id='uveli4'><i class='strelki fa fa-search-plus' aria-hidden='true'></i>
 </div><div id='umen'><i class='strelki fa fa-search-minus' aria-hidden='true'></i>
